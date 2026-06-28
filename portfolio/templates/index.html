@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── SEO Meta Tags ─────────────────────────────────────────────── -->
+  <title>{{ data.name }} · Python Full-Stack Developer</title>
+  <meta name="description"
+        content="Portfolio of {{ data.name }}, a Python Full-Stack Developer & AI/ML enthusiast specialising in LangChain, Flask, Scikit-Learn, and modern web technologies." />
+  <meta name="keywords"
+        content="Python Developer, Full-Stack, AI, ML, LangChain, Flask, Django, Portfolio" />
+  <meta name="author" content="{{ data.name }}" />
+  <link rel="canonical" href="https://yourportfolio.com/" />
+
+  <!-- ── Open Graph ────────────────────────────────────────────────── -->
+  <meta property="og:title"       content="{{ data.name }} · Python Full-Stack Developer" />
+  <meta property="og:description" content="{{ data.tagline }}" />
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://yourportfolio.com/" />
+  <meta property="og:image"       content="https://yourportfolio.com/static/images/og-preview.png" />
+
+  <!-- ── Twitter Card ──────────────────────────────────────────────── -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="{{ data.name }} · Python Developer" />
+  <meta name="twitter:description" content="{{ data.tagline }}" />
+
+  <!-- ── Fonts ─────────────────────────────────────────────────────── -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet" />
+
+  <!-- ── Icons ─────────────────────────────────────────────────────── -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        crossorigin="anonymous" />
+
+  <!-- ── Stylesheet ────────────────────────────────────────────────── -->
+  <link rel="stylesheet" href="/static/css/style.css" />
+
+  <!-- ── JSON-LD Structured Data ───────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "{{ data.name }}",
+    "jobTitle": "{{ data.title }}",
+    "email": "{{ data.email }}",
+    "url": "https://yourportfolio.com/",
+    "sameAs": [
+      "{{ data.github }}",
+      "{{ data.linkedin }}"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════════════════════════════════ -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Primary navigation">
+  <div class="nav-container">
+    <!-- Logo / Brand -->
+    <a href="#hero" class="nav-logo" aria-label="Go to top">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">{{ data.name.split()[0] }}</span>
+      <span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <!-- Desktop Links -->
+    <ul class="nav-links" role="list">
+      <li><a href="#about"    class="nav-link">About</a></li>
+      <li><a href="#skills"   class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact"  class="nav-link">Contact</a></li>
+      <li>
+        <a href="{{ data.resume_url }}" class="btn btn-sm btn-outline" download>
+          <i class="fa-solid fa-download" aria-hidden="true"></i> Resume
+        </a>
+      </li>
+    </ul>
+
+    <!-- Right controls: theme toggle + hamburger -->
+    <div class="nav-controls">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light mode">
+        <i class="fa-solid fa-moon"  id="iconMoon"></i>
+        <i class="fa-solid fa-sun"   id="iconSun"  style="display:none"></i>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Open mobile menu"
+              aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <ul role="list">
+      <li><a href="#about"    class="nav-link" data-mobile>About</a></li>
+      <li><a href="#skills"   class="nav-link" data-mobile>Skills</a></li>
+      <li><a href="#projects" class="nav-link" data-mobile>Projects</a></li>
+      <li><a href="#contact"  class="nav-link" data-mobile>Contact</a></li>
+      <li>
+        <a href="{{ data.resume_url }}" class="btn btn-outline" download>
+          <i class="fa-solid fa-download" aria-hidden="true"></i> Resume
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     HERO
+════════════════════════════════════════════════════════════════════ -->
+<section id="hero" class="hero" aria-label="Introduction">
+  <!-- Animated grid background -->
+  <div class="hero-grid" aria-hidden="true"></div>
+
+  <div class="hero-content fade-in-up">
+    <p class="hero-greeting">
+      <span class="mono">&gt;_</span> Hello, world. I'm
+    </p>
+    <h1 class="hero-name">{{ data.name }}</h1>
+    <h2 class="hero-title" id="typingTarget" aria-live="polite">{{ data.title }}</h2>
+    <p class="hero-tagline">{{ data.tagline }}</p>
+
+    <div class="hero-cta">
+      <a href="#projects" class="btn btn-primary">
+        View My Work <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+      </a>
+      <a href="#contact" class="btn btn-outline">Get In Touch</a>
+    </div>
+
+    <!-- Social Links -->
+    <div class="hero-socials">
+      <a href="{{ data.github }}"   target="_blank" rel="noopener noreferrer"
+         aria-label="GitHub profile">
+        <i class="fa-brands fa-github"></i>
+      </a>
+      <a href="{{ data.linkedin }}" target="_blank" rel="noopener noreferrer"
+         aria-label="LinkedIn profile">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <a href="{{ data.leetcode }}" target="_blank" rel="noopener noreferrer"
+         aria-label="LeetCode profile">
+        <i class="fa-solid fa-code"></i>
+      </a>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <a href="#about" class="scroll-indicator" aria-label="Scroll to about section">
+    <i class="fa-solid fa-chevron-down"></i>
+  </a>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     ABOUT
+════════════════════════════════════════════════════════════════════ -->
+<section id="about" class="section" aria-labelledby="about-heading">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-eyebrow">Get to know me</span>
+      <h2 id="about-heading" class="section-title">About Me</h2>
+    </header>
+
+    <div class="about-grid">
+      <!-- Profile card -->
+      <div class="about-photo reveal">
+        <div class="photo-frame">
+          <img src="https://picsum.photos/seed/profile/400/400"
+               alt="Profile photo of {{ data.name }}"
+               loading="lazy" width="400" height="400" />
+        </div>
+        <!-- Quick-stats below photo -->
+        <div class="stat-chips">
+          <div class="stat-chip">
+            <span class="stat-number">100+</span>
+            <span class="stat-label">LeetCode Problems</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-number">4+</span>
+            <span class="stat-label">Live Projects</span>
+          </div>
+          <div class="stat-chip">
+            <span class="stat-number">3+</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bio + details -->
+      <div class="about-text reveal">
+        <p class="bio-lead">{{ data.long_bio }}</p>
+
+        <!-- Contact details -->
+        <ul class="contact-details" role="list">
+          <li>
+            <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+            <a href="mailto:{{ data.email }}">{{ data.email }}</a>
+          </li>
+          <li>
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            <span>{{ data.phone }}</span>
+          </li>
+          <li>
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            <span>{{ data.location }}</span>
+          </li>
+        </ul>
+
+        <!-- Achievements -->
+        <h3 class="subsection-title">Achievements</h3>
+        <ul class="achievement-list" role="list">
+          {% for a in data.achievements %}
+          <li>
+            <i class="fa-solid fa-trophy" aria-hidden="true"></i>
+            {{ a }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <!-- Education Timeline -->
+    <div class="timeline-wrapper reveal">
+      <h3 class="subsection-title centered">Education</h3>
+      <ol class="timeline" aria-label="Education timeline">
+        {% for edu in data.education %}
+        <li class="timeline-item">
+          <div class="timeline-dot" aria-hidden="true">{{ edu.icon }}</div>
+          <div class="timeline-card">
+            <span class="timeline-period">{{ edu.period }}</span>
+            <h4 class="timeline-degree">{{ edu.degree }}</h4>
+            <p class="timeline-institution">{{ edu.institution }}</p>
+            <span class="timeline-score">{{ edu.score }}</span>
+          </div>
+        </li>
+        {% endfor %}
+      </ol>
+    </div>
+
+    <!-- Certifications -->
+    <div class="certs-wrapper reveal">
+      <h3 class="subsection-title centered">Certifications</h3>
+      <div class="certs-grid">
+        {% for cert in data.certifications %}
+        <div class="cert-card">
+          <i class="fa-solid fa-certificate" aria-hidden="true"></i>
+          <div>
+            <p class="cert-name">{{ cert.name }}</p>
+            <p class="cert-meta">{{ cert.issuer }} &middot; {{ cert.year }}</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     SKILLS
+════════════════════════════════════════════════════════════════════ -->
+<section id="skills" class="section section-alt" aria-labelledby="skills-heading">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-eyebrow">What I work with</span>
+      <h2 id="skills-heading" class="section-title">Technical Skills</h2>
+    </header>
+
+    <div class="skills-grid">
+      {% for group in data.skills %}
+      <div class="skill-card reveal">
+        <div class="skill-card-header">
+          <i class="fa-solid fa-{{ group.icon }}" aria-hidden="true"></i>
+          <h3>{{ group.category }}</h3>
+        </div>
+        <ul class="skill-tags" role="list">
+          {% for item in group.skills %}
+          <li class="skill-tag">{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     PROJECTS
+════════════════════════════════════════════════════════════════════ -->
+<section id="projects" class="section" aria-labelledby="projects-heading">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-eyebrow">What I've built</span>
+      <h2 id="projects-heading" class="section-title">Projects</h2>
+    </header>
+
+    <!-- Filter Buttons -->
+    <div class="filter-bar reveal" role="group" aria-label="Filter projects by category">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ai">AI / ML</button>
+      <button class="filter-btn" data-filter="fullstack">Full-Stack</button>
+      <button class="filter-btn" data-filter="ml">Machine Learning</button>
+    </div>
+
+    <!-- Project Cards -->
+    <div class="projects-grid" id="projectsGrid">
+      {% for project in data.projects %}
+      <article class="project-card reveal" data-category="{{ project.category }}"
+               aria-label="{{ project.name }}">
+        <!-- Thumbnail -->
+        <div class="project-thumb">
+          <img src="{{ project.image }}"
+               alt="Screenshot of {{ project.name }}"
+               loading="lazy" width="600" height="380" />
+          <div class="project-overlay">
+            <a href="{{ project.github }}" target="_blank" rel="noopener noreferrer"
+               class="btn btn-sm btn-ghost" aria-label="View {{ project.name }} on GitHub">
+              <i class="fa-brands fa-github" aria-hidden="true"></i> Code
+            </a>
+            {% if project.demo != "#" %}
+            <a href="{{ project.demo }}" target="_blank" rel="noopener noreferrer"
+               class="btn btn-sm btn-primary" aria-label="Live demo of {{ project.name }}">
+              <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i> Demo
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <!-- Body -->
+        <div class="project-body">
+          <h3 class="project-name">{{ project.name }}</h3>
+          <p class="project-desc">{{ project.description }}</p>
+
+          <!-- Features -->
+          <ul class="project-features" role="list">
+            {% for feat in project.features %}
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> {{ feat }}</li>
+            {% endfor %}
+          </ul>
+
+          <!-- Tech tags -->
+          <ul class="project-tech" role="list" aria-label="Technologies used">
+            {% for t in project.tech %}
+            <li class="tech-tag">{{ t }}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     CONTACT
+════════════════════════════════════════════════════════════════════ -->
+<section id="contact" class="section section-alt" aria-labelledby="contact-heading">
+  <div class="container">
+    <header class="section-header reveal">
+      <span class="section-eyebrow">Let's work together</span>
+      <h2 id="contact-heading" class="section-title">Get In Touch</h2>
+      <p class="section-sub">
+        Have a project in mind, a question, or just want to say hi?
+        Drop me a message and I'll get back to you within 24 hours.
+      </p>
+    </header>
+
+    <div class="contact-grid">
+      <!-- Info cards -->
+      <div class="contact-info reveal">
+        <a href="mailto:{{ data.email }}" class="info-card">
+          <i class="fa-solid fa-envelope" aria-hidden="true"></i>
+          <div>
+            <span class="info-label">Email</span>
+            <span class="info-value">{{ data.email }}</span>
+          </div>
+        </a>
+        <div class="info-card">
+          <i class="fa-solid fa-phone" aria-hidden="true"></i>
+          <div>
+            <span class="info-label">Phone</span>
+            <span class="info-value">{{ data.phone }}</span>
+          </div>
+        </div>
+        <div class="info-card">
+          <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+          <div>
+            <span class="info-label">Location</span>
+            <span class="info-value">{{ data.location }}</span>
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="{{ data.github }}"   target="_blank" rel="noopener noreferrer"
+             aria-label="GitHub" class="social-icon">
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a href="{{ data.linkedin }}" target="_blank" rel="noopener noreferrer"
+             aria-label="LinkedIn" class="social-icon">
+            <i class="fa-brands fa-linkedin"></i>
+          </a>
+          <a href="{{ data.leetcode }}" target="_blank" rel="noopener noreferrer"
+             aria-label="LeetCode" class="social-icon">
+            <i class="fa-solid fa-code"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-wrap reveal">
+        <form id="contactForm" novalidate aria-label="Contact form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Your Name <span aria-hidden="true">*</span></label>
+              <input type="text" id="name" name="name"
+                     placeholder="Jane Doe" autocomplete="name" required />
+              <span class="form-error" id="nameError" role="alert"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address <span aria-hidden="true">*</span></label>
+              <input type="email" id="email" name="email"
+                     placeholder="jane@example.com" autocomplete="email" required />
+              <span class="form-error" id="emailError" role="alert"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject <span aria-hidden="true">*</span></label>
+            <input type="text" id="subject" name="subject"
+                   placeholder="Project enquiry" required />
+            <span class="form-error" id="subjectError" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Message <span aria-hidden="true">*</span></label>
+            <textarea id="message" name="message" rows="5"
+                      placeholder="Tell me about your project…" required></textarea>
+            <span class="form-error" id="messageError" role="alert"></span>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-full" id="submitBtn">
+            <span class="btn-text">Send Message</span>
+            <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+          </button>
+
+          <!-- Toast feedback -->
+          <div class="form-toast" id="formToast" role="status" aria-live="polite"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════════════════════ -->
+<footer class="footer" role="contentinfo">
+  <div class="container footer-inner">
+    <a href="#hero" class="nav-logo footer-logo" aria-label="Back to top">
+      <span class="logo-bracket">&lt;</span>
+      <span class="logo-name">{{ data.name.split()[0] }}</span>
+      <span class="logo-bracket">/&gt;</span>
+    </a>
+
+    <nav aria-label="Footer navigation">
+      <ul class="footer-links" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <p class="footer-copy">
+      &copy; <span id="footerYear"></span> {{ data.name }}. Built with
+      <i class="fa-brands fa-python" aria-hidden="true"></i> Flask &amp; ❤️
+    </p>
+  </div>
+</footer>
+
+<!-- Back-to-top button -->
+<button class="back-to-top" id="backToTop" aria-label="Scroll back to top">
+  <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<!-- Main JS -->
+<script src="/static/js/main.js"></script>
+</body>
+</html>

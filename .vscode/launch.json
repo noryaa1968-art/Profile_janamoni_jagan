@@ -1,0 +1,15 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Portfolio App",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/portfolio/app.py",
+      "cwd": "${workspaceFolder}/portfolio",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/portfolio/.env",
+      "pythonPath": "${workspaceFolder}/.venv/Scripts/python.exe"
+    }
+  ]
+}
